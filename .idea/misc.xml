@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/BaiWenkai" />
+    <file type="web" url="file://$PROJECT_DIR$/JiangWankui" />
     <file type="web" url="file://$PROJECT_DIR$/WuHaiyuan" />
     <file type="web" url="file://$PROJECT_DIR$/XieDong" />
     <file type="web" url="file://$PROJECT_DIR$/YangZhengheng" />

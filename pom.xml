@@ -12,7 +12,10 @@
         <module>YangZhengheng</module>
         <module>WuHaiyuan</module>
         <module>XieDong</module>
+        <module>XieDong</module>
+        <module>JiangWankui</module>
         <module>ZhangPanke</module>
+
     </modules>
     <packaging>pom</packaging>
 
