@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="BaiWenkai" />
+        <module name="XieDong" />
         <module name="JiangWankui" />
         <module name="WuHaiyuan" />
-        <module name="XieDong" />
         <module name="YangZhengheng" />
+        <module name="BaiWenkai" />
         <module name="ZhangPanke" />
       </profile>
     </annotationProcessing>
