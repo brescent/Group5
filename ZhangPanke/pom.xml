@@ -10,14 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ZhangPanke</artifactId>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <name>ZhangPanke Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
-    <modules>
-        <module>HomeWork0307</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,7 +26,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
