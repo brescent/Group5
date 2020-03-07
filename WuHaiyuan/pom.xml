@@ -10,11 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>WuHaiyuan</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>WuHaiyuan Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
+    <modules>
+        <module>SpringMybatisDemo2020-03-07</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,7 +29,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
