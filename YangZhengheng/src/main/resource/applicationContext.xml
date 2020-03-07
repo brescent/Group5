@@ -17,7 +17,8 @@
                             http://www.springframework.org/schema/mvc   
 							http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-
+	<!--扫描指定包及其自包中的spring组件-->
+	<context:component-scan base-package="com.project"/>
 	<!--配置数据源-->
 	<bean id="data" class="com.alibaba.druid.pool.DruidDataSource">
 		<!--配置驱动类-->
@@ -91,6 +92,5 @@
 		<aop:pointcut id="cut" expression="execution(* com.project..*.*(..))"></aop:pointcut>
 		<aop:advisor advice-ref="interceptor" pointcut-ref="cut"></aop:advisor>
 	</aop:config>
-	<!--扫描指定包及其自包中的spring组件-->
-	<context:component-scan base-package="com.project"/>
+
 </beans>

@@ -12,8 +12,10 @@ import java.util.List;
 @Service
 @Transactional
 public class UserServiceImpl implements IUserService {
+
     @Resource
     private IUserMapper mapper;
+
 
     @Override
     public List<UserEntity> findAllUser() {
@@ -35,5 +37,10 @@ public class UserServiceImpl implements IUserService {
     public void addUser(UserEntity user) {
             mapper.addUser(user);
     }
+
+    public static void main(String[] args) {
+        new UserServiceImpl().findAllUser();
+    }
+
 }
 
