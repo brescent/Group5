@@ -1,8 +1,6 @@
 package com.project.entity;
 
-import java.io.Serializable;
-
-public class UserEntity implements Serializable {
+public class UserEntity {
     private int id;
     private String name;
     private String pwd;
@@ -15,14 +13,6 @@ public class UserEntity implements Serializable {
         this.name = name;
         this.pwd = pwd;
         this.phone = phone;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
