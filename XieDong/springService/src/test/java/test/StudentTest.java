@@ -20,8 +20,15 @@ public class StudentTest {
 
 
     @Test
-    public void test1() {
-        service.add(new StudentEntity("打报告","888888888"));
+    public void test() {
+
+        List<StudentEntity> list=service.findAll();
+        System.out.println(list);
+        for (StudentEntity s:list) {
+            System.out.println(s.getName()+"  "+s.getTel());
+        }
+
+
     }
 
 

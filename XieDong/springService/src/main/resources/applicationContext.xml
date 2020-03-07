@@ -43,7 +43,7 @@
 		<!--为实体类取别名的包扫描-->
           <property name="typeAliasesPackage" value="com.project.entity"></property>
 		<!--orm的映射文件-->
-		 <property name="mapperLocations" value="classpath:*.xml"></property>
+		 <property name="mapperLocations" value="classpath:orm/*.xml"></property>
 
 
 	</bean>
