@@ -16,43 +16,34 @@
                             http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
                             http://www.springframework.org/schema/mvc   
 							http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
-	<context:component-scan base-package="com.project"></context:component-scan>
-	<!--加载文件-->
+	<context:component-scan base-package="com.project.service"></context:component-scan>
 	<context:property-placeholder location="jdbc.properties"></context:property-placeholder>
-	<!--配置数据源 连接数据库的配置数据-->
-
+	<!--spring提供的数据源对象，可以帮助我们连接数据库-->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-
 		<property name="url" value="${jdbc_url}"></property>
 		<property name="username" value="${jdbc_user}"></property>
 		<property name="password" value="${jdbc_password}"></property>
 		<property name="driverClassName" value="${jdbc_driver}"></property>
 	</bean>
-
-	<!--日志配置-->
-	<bean class="org.apache.ibatis.session.Configuration">
-
-		<property name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"></property>
+	<!--配置输出日志-->
+	<bean id="log" class="org.apache.ibatis.session.Configuration">
+		<property name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"/>
 	</bean>
-    <!--创建mybatis的工厂-->
-
-	<bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!--让spring给我创建mybaits工厂-->
+	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!--数据源-->
-         <property name="dataSource" ref="dataSource"></property>
-
-		<!--为实体类取别名的包扫描-->
-          <property name="typeAliasesPackage" value="com.project.entity"></property>
-		<!--orm的映射文件-->
-		 <property name="mapperLocations" value="classpath:orm/*.xml"></property>
-
-
+		<property name="dataSource" ref="dataSource"></property>
+		<!--别名-->
+		<property name="typeAliasesPackage" value="com.project.entity"></property>
+		<!--给ORM映射 mapper配置-->
+		<property name="mapperLocations" value="classpath:orm/*Mapper.xml"></property>
 	</bean>
-<!--将mybatis的mapper接口交给spring绑定orm与持久层接口-->
-<bean id="configer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-<property name="sqlSessionFactoryBeanName" value="factory"></property>
-	<property name="basePackage" value="com.project.mapper"></property>
-</bean>
-
-
+	<!--把mapped类交给spring,让spring去绑定ORM与我们的持久层接口-->
+	<bean id="configurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!--注入工厂，因为mapped是由session产生，而session是由factory产生-->
+		<property name="sqlSessionFactoryBeanName" value="factoryBean"></property>
+		<!--把orm与接口绑定-->
+		<property name="basePackage" value="com.project.mapper"></property>
+	</bean>
 
 </beans>
