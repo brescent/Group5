@@ -1,7 +1,7 @@
 package com.project.entity;
 
 /**
- *学生实体类
+ * 学生实体类
  */
 public class StudentEntity {
     private int id;
