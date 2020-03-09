@@ -8,4 +8,7 @@ public interface IUserService {
      * @return
      */
     public UserEntity getUserInfo(String name);
+
+
+    public void register(UserEntity user);
 }

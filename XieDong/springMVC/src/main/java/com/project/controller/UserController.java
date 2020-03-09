@@ -1,13 +1,17 @@
 package com.project.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.project.dao.IUserDao;
 import com.project.entity.UserEntity;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+
 //整个类的方法不会再做视图渲染，只返回数据
 @RestController
 public class UserController {
@@ -27,14 +32,14 @@ public class UserController {
 private IUserDao dao;
 
 
-    @RequestMapping(value = "getUserInfo/{name}", method = RequestMethod.GET)
+    @RequestMapping("getUserInfo")
     //@ResponseBody //不做视图渲染，只返回数据
-    public String getUserInfo(@PathVariable("name") String name){
+    public String getUserInfo(HttpServletRequest request){
         //调用服务器数据，所以它对于浏览器属于后端，对于后端服务器属于客户端
         //1、创建httpclient 对象
         HttpClient httpClient= HttpClients.createDefault();
 
-
+String  name=request.getParameter("name");
 
 
 
@@ -58,5 +63,46 @@ private IUserDao dao;
             e.printStackTrace();
         }
         return  null;
+    }
+
+
+    @RequestMapping("register")
+    public void register(HttpServletRequest request){
+
+        //调用服务器数据，所以它对于浏览器属于后端，对于后端服务器属于客户端
+        //1、创建httpclient 对象
+        HttpClient httpClient= HttpClients.createDefault();
+//参数
+        String name =request.getParameter("name");
+        String pwd=request.getParameter("pwd");
+        int age=Integer.parseInt(request.getParameter("age"));
+
+
+        UserEntity  user=new UserEntity(name,pwd,age);
+        //创建get对象
+        HttpPost httpPost=new HttpPost("http://localhost:8081/springService/register");
+
+        String jsonString = JSON.toJSONString(user);
+        StringEntity entity = new StringEntity(jsonString, "UTF-8");
+
+        httpPost.setEntity(entity);
+        httpPost.setHeader("Content-Type","application/json;charset=utf-8");
+        CloseableHttpResponse response = null;
+        try {
+            response = (CloseableHttpResponse) httpClient.execute(httpPost);
+            HttpEntity responseEntity = response.getEntity();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(response!=null){
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
     }
 }

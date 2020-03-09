@@ -17,4 +17,9 @@ public class UserServiceImpl implements IUserService {
 
         return userDao.getUserInfo(name);
     }
+
+    @Override
+    public void register(UserEntity user) {
+        userDao.register(user);
+    }
 }

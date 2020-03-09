@@ -7,10 +7,7 @@ import com.project.entity.UserEntity;
 import com.project.service.impl.UserServiceImpl;
 import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,5 +23,11 @@ private UserServiceImpl service;
     public UserEntity getUserInfo(@PathVariable("name")String name, HttpServletRequest request){
 
      return service.getUserInfo(name);
+    }
+
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public void register(@RequestBody UserEntity user){
+
+        service.register(user);
     }
 }
