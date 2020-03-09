@@ -18,29 +18,13 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
-    public List<UserEntity> findAllUser() {
-
+    public UserEntity findUser(String name) {
         return mapper.findAllUser();
     }
 
     @Override
-    public void deleteUser(int id) {
-        mapper.deleteUser(id);
-    }
-
-    @Override
-    public void updateUser(int id, String pwd) {
-            mapper.updateUser(id, pwd);
-    }
-
-    @Override
     public void addUser(UserEntity user) {
-            mapper.addUser(user);
+          mapper.addUser(user);
     }
-
-    public static void main(String[] args) {
-        new UserServiceImpl().findAllUser();
-    }
-
 }
 

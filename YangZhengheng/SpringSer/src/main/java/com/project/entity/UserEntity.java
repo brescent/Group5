@@ -5,14 +5,16 @@ public class UserEntity {
     private String name;
     private String pwd;
     private String phone;
+    private int age;
 
     public UserEntity() {
     }
 
-    public UserEntity(String name, String pwd, String phone) {
+    public UserEntity(String name, String pwd, String phone, int age) {
         this.name = name;
         this.pwd = pwd;
         this.phone = phone;
+        this.age = age;
     }
 
     public String getName() {
@@ -37,5 +39,13 @@ public class UserEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
