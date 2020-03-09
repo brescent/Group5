@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p"
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+         					http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+							http://www.springframework.org/schema/tx 
+							http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+							http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context-4.0.xsd
+							http://www.springframework.org/schema/aop
+                            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                            http://www.springframework.org/schema/mvc   
+							http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+
+
+	<context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+	<!--spring提供的数据源对象，可以帮助我们连接数据库-->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="${jdbc_url}"></property>
+		<property name="username" value="${jdbc_user}"></property>
+		<property name="password" value="${jdbc_password}"></property>
+		<property name="driverClassName" value="${jdbc_driver}"></property>
+	</bean>
+	<!--配置输出日志-->
+	<bean id="log" class="org.apache.ibatis.session.Configuration">
+		<property name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"/>
+	</bean>
+	<!--让spring给我创建mybaits工厂-->
+	<bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!--数据源-->
+		<property name="dataSource" ref="dataSource"></property>
+		<!--别名-->
+		<property name="typeAliasesPackage" value="com.project.entity"></property>
+		<!--给ORM映射 mapper配置-->
+		<property name="mapperLocations" value="classpath:orm/*Mapper.xml"></property>
+	</bean>
+	<!--把mapped类交给spring,让spring去绑定ORM与我们的持久层接口-->
+	<bean id="configurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!--注入工厂，因为mapped是由session产生，而session是由factory产生-->
+		<property name="sqlSessionFactoryBeanName" value="factoryBean"></property>
+		<!--把orm与接口绑定-->
+		<property name="basePackage" value="com.project.mapper"></property>
+	</bean>
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		  p:dataSource-ref="dataSource" />
+
+	<!-- 指明使用注解的方式来管理事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<mvc:default-servlet-handler/>
+	<context:component-scan base-package="com.project"></context:component-scan>
+</beans>
