@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.IUserMapper">
+<resultMap id="userRM" type="userEntity">
+    <id property="id" column="pk_id"/>
+    <result property="name" column="f_name"/>
+    <result property="pwd" column="f_pwd"/>
+    <result property="age" column="f_age"/>
+</resultMap>
+</mapper>
