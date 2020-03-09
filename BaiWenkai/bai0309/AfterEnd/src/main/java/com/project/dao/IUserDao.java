@@ -4,6 +4,7 @@ import com.project.entity.UserEntity;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.context.annotation.Configuration;
 
 public interface IUserDao {
 
