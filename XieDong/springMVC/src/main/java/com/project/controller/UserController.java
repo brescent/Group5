@@ -4,6 +4,7 @@ package com.project.controller;
 import com.alibaba.fastjson.JSON;
 import com.project.dao.IUserDao;
 import com.project.entity.UserEntity;
+import com.project.entity.UserInfoEntity;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 //整个类的方法不会再做视图渲染，只返回数据
@@ -31,6 +34,39 @@ public class UserController {
 @Autowired
 private IUserDao dao;
 
+@RequestMapping("getAllUser")
+
+public String getAllUser(){
+    //调用服务器数据，所以它对于浏览器属于后端，对于后端服务器属于客户端
+    //1、创建httpclient 对象
+    HttpClient httpClient= HttpClients.createDefault();
+
+
+
+
+
+    //创建get对象
+    HttpGet httpGet=new HttpGet("http://localhost:8081/springService/getAllUser");
+
+
+
+    //执行get请求,并获取返回
+
+
+    try {
+        HttpResponse httpResponse= httpClient.execute(httpGet);
+        //获取返回的实体
+        HttpEntity httpEntity= httpResponse.getEntity();
+        //获取实体对象中的字符，也就是后端返回的json
+        String json=   EntityUtils.toString(httpEntity,"utf-8");
+
+        return json;
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return  null;
+}
+
 
     @RequestMapping("getUserInfo")
     //@ResponseBody //不做视图渲染，只返回数据
@@ -39,7 +75,7 @@ private IUserDao dao;
         //1、创建httpclient 对象
         HttpClient httpClient= HttpClients.createDefault();
 
-String  name=request.getParameter("name");
+       String  name=request.getParameter("name");
 
 
 
@@ -78,7 +114,12 @@ String  name=request.getParameter("name");
         int age=Integer.parseInt(request.getParameter("age"));
 
 
+
+
+
         UserEntity  user=new UserEntity(name,pwd,age);
+
+
         //创建get对象
         HttpPost httpPost=new HttpPost("http://localhost:8081/springService/register");
 
@@ -103,6 +144,42 @@ String  name=request.getParameter("name");
             }
         }
 
+
+    }
+
+@RequestMapping("addInfo")
+    public void addInfo(HttpServletRequest request){
+
+        HttpClient httpClient= HttpClients.createDefault();
+//参数
+        String job=request.getParameter("job");
+        int salary=Integer.parseInt(request.getParameter("salary"));
+
+        UserInfoEntity userInfo=new UserInfoEntity(job,salary);
+
+        //创建get对象
+        HttpPost httpPost=new HttpPost("http://localhost:8081/springService/addInfo");
+
+        String jsonString = JSON.toJSONString(userInfo);
+        StringEntity entity = new StringEntity(jsonString, "UTF-8");
+
+        httpPost.setEntity(entity);
+        httpPost.setHeader("Content-Type","application/json;charset=utf-8");
+        CloseableHttpResponse response = null;
+        try {
+            response = (CloseableHttpResponse) httpClient.execute(httpPost);
+            HttpEntity responseEntity = response.getEntity();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(response!=null){
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 }

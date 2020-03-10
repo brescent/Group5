@@ -4,3 +4,4 @@ com\project\controller\UserController.class
 com\project\dao\IUserDao.class
 com\project\service\impl\UserServiceImpl.class
 com\project\service\IUserService.class
+com\project\entity\UserInfoEntity.class
