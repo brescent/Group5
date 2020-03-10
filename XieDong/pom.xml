@@ -15,9 +15,13 @@
     <name>XieDong Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
+
     <modules>
-        <module>sringMvc</module>
+
         <module>springService</module>
+        <module>springMVC</module>
+
+
     </modules>
 
     <properties>
@@ -33,6 +37,19 @@
             <version>4.13</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
+        </dependency>
+
 
 
 
