@@ -1,6 +1,9 @@
 package com.project.service;
 
 import com.project.entity.UserEntity;
+import com.project.entity.UserInfoEntity;
+
+import java.util.List;
 
 public interface IUserService {
     /**
@@ -8,4 +11,10 @@ public interface IUserService {
      * @return
      */
     public UserEntity getUserInfo(String name);
+
+
+    public void register(UserEntity user);
+public void addInfo( UserInfoEntity userInfo);
+
+    public List<UserEntity> getAllUser();
 }

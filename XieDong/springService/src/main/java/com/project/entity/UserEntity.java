@@ -1,5 +1,7 @@
 package com.project.entity;
 
+import java.nio.file.attribute.UserPrincipal;
+
 public class UserEntity {
 
     private int id;
@@ -8,6 +10,8 @@ public class UserEntity {
     private int age;
 
 
+    private UserInfoEntity userInfo;
+
     public UserEntity() {
     }
 
@@ -15,6 +19,7 @@ public class UserEntity {
         this.name = name;
         this.pwd = pwd;
         this.age = age;
+
     }
 
     public int getId() {
@@ -47,5 +52,13 @@ public class UserEntity {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public UserInfoEntity getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfoEntity userInfo) {
+        this.userInfo = userInfo;
     }
 }
