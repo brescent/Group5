@@ -9,19 +9,10 @@ public class UserVO {
     public UserVO() {
     }
 
-    public UserVO(int id,String name, String pwd, int age) {
+    public UserVO(String name, String pwd, int age) {
         this.name = name;
         this.pwd = pwd;
         this.age = age;
-        this.id=id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -46,5 +37,13 @@ public class UserVO {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

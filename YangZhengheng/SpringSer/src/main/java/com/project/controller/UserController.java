@@ -28,4 +28,7 @@ public class UserController {
         service.addUser(userEntity);
         return "ok";
     }
+
+
+
 }

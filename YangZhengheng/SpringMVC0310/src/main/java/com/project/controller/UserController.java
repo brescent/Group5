@@ -1,7 +1,7 @@
 package com.project.controller;
 
-
 import com.project.util.StringUtil;
+import com.project.vo.UserInfoVO;
 import com.project.vo.UserVO;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,31 +23,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @RestController
 public class UserController {
-
-    @RequestMapping(value = "find/{name}",method = RequestMethod.GET)
-    public   String findUser(@PathVariable("name") String name){
-        //调用服务器数据，所以它对于浏览器属于后端，对于后端服务器属于客户端
-        //1、创建httpclient 对象
-        HttpClient httpClient= HttpClients.createDefault();
-        //创建get对象
-        HttpGet httpGet=new HttpGet("http://localhost:8081/SpringSer/find/"+name);
-        //执行get请求,并获取返回
-        try {
-            HttpResponse httpResponse= httpClient.execute(httpGet);
-            //获取返回的实体
-            HttpEntity httpEntity= httpResponse.getEntity();
-            //获取实体对象中的字符,,也就是后端返回的json
-            String json=   EntityUtils.toString(httpEntity,"utf-8");
-
-            return json;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return  null;
-    }
 
     @RequestMapping("addUser")
     public ModelAndView addUser(UserVO userVO){
@@ -55,7 +32,7 @@ public class UserController {
         mv.addObject("info", StringUtil.USER_ADD_OK);
         //post提交到后端
         //1、创建httpclient
-        HttpClient httpClient=HttpClients.createDefault();
+        HttpClient httpClient= HttpClients.createDefault();
         //创建post请求
         HttpPost post=new HttpPost("http://localhost:8081/SpringSer0310/addUser");
         //post放入参数
@@ -85,5 +62,61 @@ public class UserController {
         return  mv;
     }
 
+    @RequestMapping("login")
+    public   String findUser(){
+        //调用服务器数据，所以它对于浏览器属于后端，对于后端服务器属于客户端
+        //1、创建httpclient 对象
+        HttpClient httpClient= HttpClients.createDefault();
+        //创建get对象
+        HttpGet httpGet=new HttpGet("http://localhost:8081/SpringSer0310/login");
+        //执行get请求,并获取返回
+        try {
+            HttpResponse httpResponse= httpClient.execute(httpGet);
+            //获取返回的实体
+            HttpEntity httpEntity= httpResponse.getEntity();
+            //获取实体对象中的字符,,也就是后端返回的json
+            String json=   EntityUtils.toString(httpEntity,"utf-8");
 
+            return json;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
+    @RequestMapping("addUserInfo")
+    public ModelAndView addUserInfo(UserInfoVO infoVO){
+        ModelAndView mv=new ModelAndView("addUserInfo");
+
+        //post提交到后端
+        //1、创建httpclient
+        HttpClient httpClient= HttpClients.createDefault();
+        //创建post请求
+        HttpPost post=new HttpPost("http://localhost:8081/SpringSer0310/addUserInfo");
+        //post放入参数
+        List<BasicNameValuePair> listParm=new ArrayList<>();
+        listParm.add(new BasicNameValuePair("job",infoVO.getJob()));
+        listParm.add(new BasicNameValuePair("money",String.valueOf(infoVO.getMoney())));
+
+
+        try {
+            post.setEntity(new UrlEncodedFormEntity(listParm,"utf-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        //执行psot请求
+        try {
+            HttpResponse httpResponse=  httpClient.execute(post);
+            HttpEntity entity=    httpResponse.getEntity();
+            String result=    EntityUtils.toString(entity,"utf-8");
+            if(!result.equals("ok")){
+                //如果没成功就返回login
+                mv.setViewName("login");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  mv;
+    }
 }
