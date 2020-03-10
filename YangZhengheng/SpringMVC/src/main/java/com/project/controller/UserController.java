@@ -11,10 +11,13 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.List;
 
+
+@RestController
 public class UserController {
 
     @RequestMapping(value = "find/{name}",method = RequestMethod.GET)
@@ -23,13 +26,13 @@ public class UserController {
         //1、创建httpclient 对象
         HttpClient httpClient= HttpClients.createDefault();
         //创建get对象
-        HttpGet httpGet=new HttpGet("http://localhost:8081/user/find"+name);
+        HttpGet httpGet=new HttpGet("http://localhost:8081/SpringSer/find/"+name);
         //执行get请求,并获取返回
         try {
             HttpResponse httpResponse= httpClient.execute(httpGet);
             //获取返回的实体
             HttpEntity httpEntity= httpResponse.getEntity();
-            //获取实体对象中的字符，也就是后端返回的json
+            //获取实体对象中的字符,,也就是后端返回的json
             String json=   EntityUtils.toString(httpEntity,"utf-8");
 
             return json;

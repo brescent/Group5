@@ -17,7 +17,9 @@ public class UserController {
 
     @RequestMapping(value = "find/{name}",method = RequestMethod.GET)
     public UserEntity findUser(@PathVariable("name") String name){
+
         return service.findUser(name);
+
     }
 
 }

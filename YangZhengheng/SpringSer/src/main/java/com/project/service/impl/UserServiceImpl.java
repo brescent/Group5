@@ -19,7 +19,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserEntity findUser(String name) {
-        return mapper.findAllUser();
+        return mapper.findAllUser(name);
     }
 
     @Override

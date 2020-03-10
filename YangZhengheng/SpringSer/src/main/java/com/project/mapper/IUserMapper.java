@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 public interface IUserMapper {
-    @Select("select * from t_user")
+    @Select("select * from t_user where f_name like #{name}")
     @ResultMap("userRM")
-    public UserEntity findAllUser();
+    public UserEntity findAllUser(@Param("name") String name);
 
     @Insert("INSERT INTO t_user(f_name,f_pwd,f_phone) VALUES(#{name},#{pwd},#{pwd});")
     public void addUser(UserEntity user);

@@ -8,7 +8,7 @@
         <result column="f_name" property="name"></result>
         <result column="f_pwd" property="pwd"></result>
         <result column="f_phone" property="phone"></result>
-        <result column="f_age"></result>
+        <result column="f_age" property="age"></result>
     </resultMap>
 </mapper>
   
