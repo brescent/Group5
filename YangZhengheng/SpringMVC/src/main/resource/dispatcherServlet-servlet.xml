@@ -15,7 +15,7 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
             p:prefix="/" p:suffix=".jsp" />
 
-    <!-- mvc:annotation-driven使用注解功能 -->
+    <!--   mvc:annotation-driven使用注解功能 -->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <!--json处理-->

@@ -10,6 +10,6 @@ public interface IUserMapper {
     @ResultMap("userRM")
     public UserEntity findAllUser(@Param("name") String name);
 
-    @Insert("INSERT INTO t_user(f_name,f_pwd,f_phone) VALUES(#{name},#{pwd},#{pwd});")
+    @Insert("INSERT INTO t_user (f_name,f_pwd,f_phone) VALUES(#{name},#{pwd},#{pwd});")
     public void addUser(UserEntity user);
 }

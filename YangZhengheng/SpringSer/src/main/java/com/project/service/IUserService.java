@@ -2,7 +2,7 @@ package com.project.service;
 
 import com.project.entity.UserEntity;
 
-import java.util.List;
+
 
 public  interface IUserService {
     /**
@@ -13,5 +13,5 @@ public  interface IUserService {
     public  UserEntity findUser(String name);
 
 
-    public void addUser(UserEntity user);
+    public void addUser(UserEntity userEntity);
 }

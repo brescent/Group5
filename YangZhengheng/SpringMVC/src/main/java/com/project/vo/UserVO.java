@@ -1,20 +1,17 @@
-package com.project.entity;
+package com.project.vo;
 
-public class UserEntity {
-    /**id*/
+public class UserVO {
     private int id;
     private String name;
     private String pwd;
-    private String phone;
     private int age;
 
-    public UserEntity() {
+    public UserVO() {
     }
 
-    public UserEntity(String name, String pwd, String phone, int age) {
+    public UserVO(String name, String pwd, int age) {
         this.name = name;
         this.pwd = pwd;
-        this.phone = phone;
         this.age = age;
     }
 
@@ -40,14 +37,6 @@ public class UserEntity {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public int getAge() {

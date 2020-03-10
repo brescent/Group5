@@ -16,15 +16,14 @@ public class UserServiceImpl implements IUserService {
     @Resource
     private IUserMapper mapper;
 
-
     @Override
     public UserEntity findUser(String name) {
         return mapper.findAllUser(name);
     }
 
     @Override
-    public void addUser(UserEntity user) {
-          mapper.addUser(user);
+    public void addUser(UserEntity userEntity) {
+          mapper.addUser(userEntity);
     }
 }
 

@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 @RestController
 public class UserController {
 
-    @Autowired
-    private IUserService service;
+    @Resource
+  private IUserService service;
 
     @RequestMapping(value = "find/{name}",method = RequestMethod.GET)
     public UserEntity findUser(@PathVariable("name") String name){
@@ -21,5 +23,9 @@ public class UserController {
         return service.findUser(name);
 
     }
-
+    @RequestMapping("addUser")
+    public String addUser(UserEntity userEntity){
+        service.addUser(userEntity);
+        return "ok";
+    }
 }
