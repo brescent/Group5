@@ -17,8 +17,8 @@
     <url>http://www.example.com</url>
     <modules>
         <module>SpringMybatisDemo2020-03-07</module>
-        <module>SpringMVCFrontEnd2020-03-09</module>
-        <module>SpringServiceAfterEnd2020-03-09</module>
+        <module>SpringMVCFrontEnd</module>
+        <module>SpringServiceAfterEnd</module>
     </modules>
 
     <properties>

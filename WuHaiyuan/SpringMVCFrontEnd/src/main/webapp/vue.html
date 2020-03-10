@@ -9,6 +9,7 @@
     <script>
         window.onload = function () {
 
+
             new Vue({
                 el: "#vueId",
                 data: {
@@ -17,8 +18,7 @@
                     pwd: "",
                     age: "",
                     job: "",
-                    money: "",
-                    changeDate: ""
+                    money: ""
                 },
                 methods: {
                     addUser: function () {
@@ -48,6 +48,26 @@
                     }
                 }
             });
+
+            var vm = new Vue({
+                el: "#userInfo",
+                data: {
+                    userList: null
+                },
+                methods: {
+                    getUserList: function () {
+                        //发送post请求
+                        this.$http.post("findAllBefore",
+                            {emulateJSON: true}).then(function (res) {
+                            var userListStr = res.body;
+                            this.userList = JSON.parse(userListStr);
+                        }, function (res) {
+                            console.log(res.status);
+                        });
+                    }
+                }
+            });
+
         };
 
         function showAddInfo() {
@@ -101,15 +121,18 @@
             <p/>
             <span>工资:</span><input type="number" v-model="money" placeholder="……" name="money">
             <p/>
-            <span>改变时间:</span><input type="text" v-model="changeDate" placeholder="……" name="changeDate">
-            <p/>
             <input type="button" value="提交" @click="addUserInfo()">
             <p/>
         </form>
     </div>
 
-    <span style="color:red;font-size: 20px">所有已注册用户信息</span>
+
+</div>
+<div id="userInfo">
     <p/>
+    <input type="button" value="点击查看所有注册用户" @click="getUserList">
+    <p/>
+    <span style="color:red;font-size: 20px">所有已注册用户信息</span>
     <table border="1px">
         <thead>
         <tr>
@@ -121,11 +144,17 @@
             <th>变更时间</th>
         </tr>
         </thead>
-        <tbody id="userInfo"></tbody>
+        <tbody>
+        <tr v-for="user in userList">
+            <td>{{user.name}}</td>
+            <td>{{user.pwd}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.userInfo.job}}</td>
+            <td>{{user.userInfo.money}}</td>
+            <td>{{user.userInfo.changeDate}}</td>
+        </tr>
+        </tbody>
     </table>
-
 </div>
-
-
 </body>
 </html>
