@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.dao.IUserDao">
+
+    <resultMap  type="userEntity" id="userMap">
+        <result property="id" column="pk_id"></result>
+        <result property="name" column="f_name"></result>
+        <result property="pwd"  column="f_password"></result>
+        <result property="age"  column="f_age"></result>
+
+     <association property="userInfo" select="getInfo" column="fk_userInfoId"></association>
+
+    </resultMap>
+
+    <select id="getAllUser" resultMap="userMap">
+
+
+        select * from t_user
+    </select>
+
+    <select id="getUserInfo" resultMap="userMap">
+
+        select * from t_user where f_name=#{param1}
+    </select>
+
+    <insert id="addInfo">
+        insert into t_userInfo values (null,#{userInfo.job},#{userInfo.salary},#{userInfo.changeTime})
+    </insert>
+
+    <insert id="register" useGeneratedKeys="true" keyProperty="id">
+
+       insert into t_user values(null,#{user.name},#{user.pwd},#{user.age},#{user.userInfo.id});
+    </insert>
+
+
+    <select id="getInfo" resultType="userInfoEntity">
+        select * from t_userInfo where id=#{param1}
+    </select>
+
+
+
+
+
+
+</mapper>
