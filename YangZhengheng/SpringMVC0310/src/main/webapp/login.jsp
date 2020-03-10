@@ -15,7 +15,7 @@
 
 </div>
 <form action="addUserInfo">
-   工作： <input type="text" name="job">
+   职位： <input type="text" name="job">
    工资： <input type="text" name="money">
     <input type="submit" value="提交">
 </form>

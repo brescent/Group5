@@ -1,6 +1,7 @@
 package com.project.vo;
 
 public class UserInfoVO {
+    /***/
         private int userId;
         private String job;
         private int money;

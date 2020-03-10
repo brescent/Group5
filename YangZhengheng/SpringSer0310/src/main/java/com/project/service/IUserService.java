@@ -6,8 +6,7 @@ import com.project.entity.UserInfoEntity;
 
 public interface IUserService {
     public UserEntity findUser(int id);
-
-
+    /***/
     public void addUser(UserEntity user);
 
 

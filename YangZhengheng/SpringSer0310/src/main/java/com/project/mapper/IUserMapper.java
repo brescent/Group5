@@ -9,7 +9,7 @@ public interface IUserMapper {
     @ResultMap("userRM")
     public UserEntity findUser(@Param("id") int id);
 
-
+    /***/
     public void addUser(UserEntity user);
 
     @Insert("insert into t_userInfo(fk_userId,f_job,f_money) values(#{userId},#{job},#{money})")

@@ -3,6 +3,7 @@ package com.project.entity;
 public class UserEntity {
     /**id*/
     private int id;
+    /***/
     private String name;
     private String pwd;
     private String phone;

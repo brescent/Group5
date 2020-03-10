@@ -11,7 +11,7 @@
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
 
-  <!--配置servlet，,,,-->
+  <!--配置servlet，,,,...-->
   <servlet>
     <servlet-name>dispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

@@ -1,6 +1,7 @@
 package com.project.entity;
 
 public class UserInfoEntity {
+    /***/
     private int id;
     private int userId;
     private String job;

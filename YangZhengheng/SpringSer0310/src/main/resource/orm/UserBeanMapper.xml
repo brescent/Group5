@@ -10,6 +10,7 @@
         <result column="f_age" property="age"></result>
     </resultMap>
 
+    <!---->
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO t_user (f_name,f_pwd,f_age) VALUES(#{name},#{pwd},#{age});
     </insert>

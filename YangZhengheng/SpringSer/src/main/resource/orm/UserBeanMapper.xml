@@ -10,5 +10,6 @@
         <result column="f_phone" property="phone"></result>
         <result column="f_age" property="age"></result>
     </resultMap>
+    <!---->
 </mapper>
   

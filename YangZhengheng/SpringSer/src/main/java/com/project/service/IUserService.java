@@ -14,6 +14,6 @@ public  interface IUserService {
 
 
     public void addUser(UserEntity userEntity);
-
+    /***/
     public int newId();
 }

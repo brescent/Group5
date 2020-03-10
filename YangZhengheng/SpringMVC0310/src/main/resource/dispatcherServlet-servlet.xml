@@ -18,7 +18,7 @@
     <!--   mvc:annotation-driven使用注解功能 -->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
-            <!--json处理-->
+            <!--json处理           -->
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="supportedMediaTypes">
                     <list>
@@ -28,6 +28,9 @@
                 </property>
             </bean>
         </mvc:message-converters>
+
+
+
     </mvc:annotation-driven>
 
     <mvc:default-servlet-handler/>

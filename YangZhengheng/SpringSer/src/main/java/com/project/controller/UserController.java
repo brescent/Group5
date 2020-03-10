@@ -16,7 +16,7 @@ public class UserController {
 
     @Resource
   private IUserService service;
-
+    /***/
     @RequestMapping(value = "find/{name}",method = RequestMethod.GET)
     public UserEntity findUser(@PathVariable("name") String name){
 
