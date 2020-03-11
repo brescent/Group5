@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -36,4 +37,10 @@ public class UserController {
         UserEntity user=service.findUser(id);
         return user;
     }
+
+    @RequestMapping("findAll")
+    public List<UserEntity> findAll(){
+        return  service.findLL();
+    }
+
 }

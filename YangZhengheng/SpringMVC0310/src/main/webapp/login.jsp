@@ -20,7 +20,20 @@
     <input type="submit" value="提交">
 </form>
 
-
+<div id="lid">
+    <table border="2">
+        <tr>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>年龄</td>
+        </tr>
+        <tr v-for="user in info">
+            <td>{{u.name}}</td>
+            <td>{{u.pwd}}</td>
+            <td>{{u.age}}</td>
+        </tr>
+    </table>
+</div>
 <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 <!--AJAX-->
 <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
@@ -51,6 +64,22 @@
             }
         }
     });
+
+    new Vue({
+        el:"#lid",
+        data:{
+            info:""
+        },
+        mounted:function () {
+            this.$http.get('findAll').then(function (reslut) {
+                var r=reslut.body
+                var jsonR=JSON.parse(r);
+                this.info=jsonR;
+            },function () {
+
+            })
+        }
+    })
 </script>
 </body>
 </html>

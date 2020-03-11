@@ -13,8 +13,10 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,9 +27,9 @@ import java.util.List;
 
 @RestController
 public class UserController {
-
-    @RequestMapping("addUser")
-    public ModelAndView addUser(UserVO userVO){
+    //value = "find/{name}",method = RequestMethod.GET
+    @RequestMapping(value = "addUser/{name}/{pwd}/{age}")
+    public ModelAndView addUser(@PathVariable("name") String name, @PathVariable("pwd") String pwd,@PathVariable("age") int age){
         ModelAndView mv=new ModelAndView("addUser");
         mv.addObject("info", StringUtil.USER_ADD_OK);
         //post提交到后端
@@ -37,6 +39,7 @@ public class UserController {
         HttpPost post=new HttpPost("http://localhost:8081/SpringSer0310/addUser");
         //post放入参数
         List<BasicNameValuePair> listParm=new ArrayList<>();
+        UserVO userVO=new UserVO(name,pwd,age);
         listParm.add(new BasicNameValuePair("name",userVO.getName()));
         listParm.add(new BasicNameValuePair("age",String.valueOf(userVO.getAge())));
         listParm.add(new BasicNameValuePair("pwd",userVO.getPwd()));
@@ -118,5 +121,28 @@ public class UserController {
             e.printStackTrace();
         }
         return  mv;
+    }
+
+
+    @RequestMapping("findAll")
+    public   String findAllUser(){
+        //调用服务器数据，所以它对于浏览器属于后端，对于后端服务器属于客户端
+        //1、创建httpclient 对象
+        HttpClient httpClient= HttpClients.createDefault();
+        //创建get对象
+        HttpGet httpGet=new HttpGet("http://localhost:8081/SpringSer0310/findAll");
+        //执行get请求,并获取返回
+        try {
+            HttpResponse httpResponse= httpClient.execute(httpGet);
+            //获取返回的实体
+            HttpEntity httpEntity= httpResponse.getEntity();
+            //获取实体对象中的字符,,也就是后端返回的json
+            String json=   EntityUtils.toString(httpEntity,"utf-8");
+
+            return json;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  null;
     }
 }

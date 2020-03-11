@@ -3,6 +3,8 @@ package com.project.service;
 import com.project.entity.UserEntity;
 import com.project.entity.UserInfoEntity;
 
+import java.util.List;
+
 
 public interface IUserService {
     public UserEntity findUser(int id);
@@ -14,4 +16,6 @@ public interface IUserService {
 
 
     public int newId();
+
+    public List<UserEntity> findLL();
 }

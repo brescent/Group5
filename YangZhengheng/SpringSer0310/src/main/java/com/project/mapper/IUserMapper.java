@@ -4,6 +4,8 @@ import com.project.entity.UserEntity;
 import com.project.entity.UserInfoEntity;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 public interface IUserMapper {
     @Select("select * from t_user where pk_id = #{id}")
     @ResultMap("userRM")
@@ -19,4 +21,8 @@ public interface IUserMapper {
     @Select("SELECT LAST_INSERT_ID();")
     @ResultType(Integer.class)
     public int newId();
+
+    @Select("select * from t_user ")
+    @ResultMap("userRM")
+    public List<UserEntity> findAll();
 }
