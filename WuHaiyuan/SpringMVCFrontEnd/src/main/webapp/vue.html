@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        window.onload = function () {
+
+
+            new Vue({
+                el: "#vueId",
+                data: {
+                    id: "",
+                    name: "",
+                    pwd: "",
+                    age: "",
+                    job: "",
+                    money: ""
+                },
+                methods: {
+                    addUser: function () {
+                        //发送post请求
+                        this.$http.post("addUserBefore",
+                            {name: this.name, "pwd": this.pwd, age: this.age},
+                            {emulateJSON: true}).then(function (res) {
+                            var userEntity = res.body;
+                            var userObj = JSON.parse(userEntity);
+                            this.id = userObj.id;
+                            this.name = userObj.name;
+                            this.pwd = userObj.pwd;
+                            this.age = userObj.age
+                        }, function (res) {
+                            console.log(res.status);
+                        });
+                    },
+                    addUserInfo: function () {
+                        //发送post请求
+                        this.$http.post("addUserInfo",
+                            {"userId": this.id, "job": this.job, "money": this.money},
+                            {emulateJSON: true}).then(function (res) {
+
+                        }, function (res) {
+                            console.log(res.status);
+                        });
+                    }
+                }
+            });
+
+            var vm = new Vue({
+                el: "#userInfo",
+                data: {
+                    userList: null
+                },
+                methods: {
+                    getUserList: function () {
+                        //发送post请求
+                        this.$http.post("findAllBefore",
+                            {emulateJSON: true}).then(function (res) {
+                            var userListStr = res.body;
+                            this.userList = JSON.parse(userListStr);
+                        }, function (res) {
+                            console.log(res.status);
+                        });
+                    }
+                }
+            });
+
+        };
+
+        function showAddInfo() {
+            $("#addInfo").show();
+        }
+    </script>
+</head>
+<body>
+<div id="vueId">
+    <form action="addUserBefore" method="post">
+        <span>用户注册</span>
+        <p/>
+        <span>用户:</span><input type="text" v-model="name" placeholder="……" name="name">
+        <p/>
+        <span>密码:</span><input type="password" v-model="pwd" placeholder="……" name="pwd">
+        <p/>
+        <span>年龄:</span><input type="number" v-model.lazy="age" placeholder="……" name="age">
+        <p/>
+        <input type="button" value="提交" @click="addUser">
+        <p/>
+    </form>
+    <span style="color:greenyellow;font-size: 20px">当前注册用户信息</span>
+    <p/>
+    <table border="1px">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>用户</th>
+            <th>密码</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="user">
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{pwd}}</td>
+            <td>{{age}}</td>
+            <td><input type="button" value="添加用户详细信息" onclick="showAddInfo()"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p/>
+
+    <div id="addInfo" style="display:none">
+        <form method="post">
+            <span>添加用户详细信息</span>
+            <p/>
+            <span>职位:</span><input type="text" v-model="job" placeholder="……" name="job">
+            <p/>
+            <span>工资:</span><input type="number" v-model="money" placeholder="……" name="money">
+            <p/>
+            <input type="button" value="提交" @click="addUserInfo()">
+            <p/>
+        </form>
+    </div>
+
+
+</div>
+<div id="userInfo">
+    <p/>
+    <input type="button" value="点击查看所有注册用户" @click="getUserList">
+    <p/>
+    <span style="color:red;font-size: 20px">所有已注册用户信息</span>
+    <table border="1px">
+        <thead>
+        <tr>
+            <th>用户</th>
+            <th>密码</th>
+            <th>年龄</th>
+            <th>职位</th>
+            <th>工资</th>
+            <th>变更时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user in userList">
+            <td>{{user.name}}</td>
+            <td>{{user.pwd}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.userInfo.job}}</td>
+            <td>{{user.userInfo.money}}</td>
+            <td>{{user.userInfo.changeDate}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

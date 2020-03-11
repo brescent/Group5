@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.IUserMapper">
+<resultMap id="userRM" type="userEntity">
+    <id property="id" column="pk_id"/>
+    <result property="name" column="f_name"/>
+    <result property="pwd" column="f_pwd"/>
+    <result property="age" column="f_age"/>
+    <association property="userInfo" column="pk_id" select="findInfoByUserId"/>
+</resultMap>
+    <select id="findInfoByUserId" resultType="infoEntity">
+        select pk_id id, f_job job,f_money money,f_changeDate changeDate from t_info where
+        fk_userId = #{id}
+    </select>
+
+</mapper>

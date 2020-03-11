@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="lid">
+    <table border="2">
+        <tr>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </tr>
+        <tr v-for="user in info">
+            <td>{{user.name}}</td>
+            <td>{{user.pwd}}</td>
+            <td>{{user.age}}</td>
+            <td><button value="查看详情" @click="userInfo(user.id)">查看详情</button></td>
+        </tr>
+    </table>
+</div>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<!--AJAX-->
+<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+<!--Axios-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    new Vue({
+        el:"#lid",
+        data:{
+            info:"",
+
+        },
+        mounted:function () {
+            var obj=this;
+            axios.get('findAll')
+                .then(function (response) {
+
+                    obj.info=JSON.parse(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        methods:{
+            userInfo:function (id) {
+                alert(id);
+                //根据ID用AJAX去后台查询
+            }
+        }
+    });
+    // new Vue({
+    //     el:"#lid",
+    //     data:{
+    //         info:""
+    //     },
+    //     mounted:function () {
+    //         this.$http.get('findAll').then(function (reslut) {
+    //             var r=reslut.body;
+    //             var jsonR=JSON.parse(r);
+    //             this.info=jsonR;
+    //         },function () {
+    //
+    //         })
+    //     },
+    //     methods:{
+    //         userInfo:function (id) {
+    //             alert(id);
+    //             //根据id查询
+    //         }
+    //     }
+    // })
+</script>
+</body>
+</html>

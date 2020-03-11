@@ -3,22 +3,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>Group5</artifactId>
+        <artifactId>BaiWenkai</artifactId>
         <groupId>com.project</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>WuHaiyuan</artifactId>
+    <artifactId>bai0310</artifactId>
     <packaging>pom</packaging>
 
-    <name>WuHaiyuan Maven Webapp</name>
+    <name>bai0310 Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
     <modules>
-        <module>SpringMybatisDemo2020-03-07</module>
-        <module>SpringMVCFrontEnd</module>
-        <module>SpringServiceAfterEnd</module>
+        <module>After0310</module>
+        <module>Front0310</module>
     </modules>
 
     <properties>
@@ -31,13 +30,13 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>WuHaiyuan</finalName>
+        <finalName>bai0310</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
