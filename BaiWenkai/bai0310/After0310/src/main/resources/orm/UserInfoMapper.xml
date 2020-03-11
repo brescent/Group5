@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.IUserInfoDao">
+    <resultMap id="infoRM" type="infoEntity">
+        <id property="id" column="pk_id"/>
+        <result property="salary" column="f_salary"/>
+        <result property="job" column="f_job"/>
+        <result property="date" column="f_date"/>
+        <association property="user" column="fk_userId" select="findUserById"/>
+    </resultMap>
+
+    <select id="findUserById" resultType="userEntity">
+        select * from t_user where pk_id = #{userId}
+    </select>
+</mapper>
