@@ -54,11 +54,11 @@ public class UserEntity {
         this.age = age;
     }
 
-    public UserInfoEntity getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(UserInfoEntity userInfo) {
-        this.userInfo = userInfo;
-    }
+//    public UserInfoEntity getUserInfo() {
+//        return userInfo;
+//    }
+//
+//    public void setUserInfo(UserInfoEntity userInfo) {
+//        this.userInfo = userInfo;
+//    }
 }
