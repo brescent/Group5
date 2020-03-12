@@ -18,7 +18,7 @@ public interface IUserDao {
 
     public void register(@Param("user") UserEntity  user);
     public void addInfo(@Param("userInfo") UserInfoEntity userInfo);
-
+        public void update(UserEntity  user);
 
     public List<UserEntity> getAllUser();
 }
