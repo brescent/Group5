@@ -10,11 +10,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>YangZhengheng</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>YangZhengheng Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
+    <modules>
+        <module>SpringMVC</module>
+        <module>SpringService</module>
+        <module>SpringSer</module>
+        <module>SpringMVC0310</module>
+        <module>SpringSer0310</module>
+
+    </modules>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,6 +39,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.10</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -3,10 +3,24 @@
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/BaiWenkai" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BaiWenkai/bai0307" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BaiWenkai/bai0309" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BaiWenkai/bai0309/AfterEnd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BaiWenkai/bai0309/FrontEnd" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JiangWankui" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/WuHaiyuan" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/WuHaiyuan/SpringMVCFrontEnd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/WuHaiyuan/SpringMybatisDemo2020-03-07" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/WuHaiyuan/SpringServiceAfterEnd" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/XieDong" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/XieDong/springMVC" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/XieDong/springService" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/YangZhengheng" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/YangZhengheng/SpringMVC" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/YangZhengheng/SpringMVC0310" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/YangZhengheng/SpringSer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/YangZhengheng/SpringSer0310" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ZhangPanke" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ZhangPanke/HomeWork0307" charset="UTF-8" />
   </component>
 </project>

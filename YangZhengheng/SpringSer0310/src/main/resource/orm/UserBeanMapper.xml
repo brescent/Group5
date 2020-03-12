@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.IUserMapper">
+    <resultMap id="userRM" type="UserEntity">
+        <id property="id" column="pk_id"></id>
+        <result column="f_name" property="name"></result>
+        <result column="f_pwd" property="pwd"></result>
+        <result column="f_age" property="age"></result>
+    </resultMap>
+
+    <!---->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_user (f_name,f_pwd,f_age) VALUES(#{name},#{pwd},#{age});
+    </insert>
+
+
+
+</mapper>
+  
