@@ -5,6 +5,7 @@
     <title>Title</title>
     <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
     <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="jquery-3.2.1.min.js"></script>
     <script>
         window.onload = function () {
@@ -57,13 +58,23 @@
                 methods: {
                     getUserList: function () {
                         //发送post请求
-                        this.$http.post("findAllBefore",
+                        // this.$http.post("findAllBefore",
+                        //     {emulateJSON: true}).then(function (res) {
+                        //     var userListStr = res.body;
+                        //     this.userList = JSON.parse(userListStr);
+                        // }, function (res) {
+                        //     console.log(res.status);
+                        // });
+                        axios.post("findAllBefore",
                             {emulateJSON: true}).then(function (res) {
-                            var userListStr = res.body;
+                            var userListStr = res.data;
                             this.userList = JSON.parse(userListStr);
-                        }, function (res) {
+                        }.bind(this), function (res) {
                             console.log(res.status);
-                        });
+                        })
+                    },
+                    userInfo:function (id) {
+                        alert(id);
                     }
                 }
             });
@@ -142,6 +153,7 @@
             <th>职位</th>
             <th>工资</th>
             <th>变更时间</th>
+            <th>查看详情</th>
         </tr>
         </thead>
         <tbody>
@@ -152,6 +164,7 @@
             <td>{{user.userInfo.job}}</td>
             <td>{{user.userInfo.money}}</td>
             <td>{{user.userInfo.changeDate}}</td>
+            <td><input type="button" value="查看详情" @click="userInfo(user.id)"></td>
         </tr>
         </tbody>
     </table>
