@@ -40,6 +40,11 @@
         select * from t_userInfo where id=#{param1}
     </select>
 
+    <update id="update" parameterType="userEntity">
+
+ update t_user set f_age=50 where f_name=#{name}
+    </update>
+
 
 
 

@@ -1,6 +1,8 @@
 package test;
 
+import com.project.entity.StockEntity;
 import com.project.entity.UserEntity;
+import com.project.service.IStockService;
 import com.project.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,12 +18,11 @@ import java.util.List;
 @ContextConfiguration("classpath:applicationContext.xml")
 public class UserTset {
     @Autowired
-    private IUserService service;
+    private IStockService stockService;
 
     @Test
     public void testUser() {
-        List<UserEntity> l= service.findAll();
- int x=0;
+        stockService.buy(new StockEntity(1,"航空母舰",17));
     }
 
 }

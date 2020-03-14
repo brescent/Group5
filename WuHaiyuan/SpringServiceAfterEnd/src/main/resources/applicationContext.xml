@@ -48,13 +48,25 @@
 		<!--把orm与接口绑定-->
 		<property name="basePackage" value="com.project.mapper"></property>
 	</bean>
-	<!-- 配置事务管理器 -->
-	<bean id="transactionManager"
-		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-		  p:dataSource-ref="dataSource" />
+	<!--spring事务-->
+	<!--事务管理器-->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 
-	<!-- 指明使用注解的方式来管理事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!--事务通知-->
+	<tx:advice id="tadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!--以find结尾的方法，都为只读也就不需要事务-->
+			<tx:method name="*find" read-only="true"/>
+			<tx:method name="*" rollback-for="Exception"></tx:method>
+		</tx:attributes>
+	</tx:advice>
+
+	<!--通过AOP来把事务通知放到目标方法中-->
+	<aop:config>
+		<aop:advisor advice-ref="tadvice" pointcut="execution(* com.project.service.*.*(..))" ></aop:advisor>
+	</aop:config>
 	<mvc:default-servlet-handler/>
 	<context:component-scan base-package="com.project"></context:component-scan>
 </beans>

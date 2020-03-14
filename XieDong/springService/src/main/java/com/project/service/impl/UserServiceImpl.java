@@ -26,7 +26,7 @@ public class UserServiceImpl implements IUserService {
 
 
         userDao.register(user);
-
+         userDao.update(user);
     }
 
     @Override
