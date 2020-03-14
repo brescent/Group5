@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"
+        >
+<hibernate-configuration>
+    <session-factory>
+
+<!--        配置数据库的连接-->
+
+        <property name="connection.driver_class" >com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/aopbase?useUnicode=true&amp;characterEncoding=UTF-8</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+<!--        方言:把对象转换为sql语句针对不同的数据库来转换  这里给mySql的方言-->
+<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+<!--        是否允许hibernate自动生成数据库表-->
+<!--        update 对象属性改变,那么hibernate回去修改表中的列来同步-->
+<!--        create 启动hibernate的时候 会把数据库的表全部删除重新在键-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+<!--吧我们的orm交给hibernate-->
+     <mapping class="com.project.entity.UserEntity"></mapping>
+    </session-factory>
+</hibernate-configuration>

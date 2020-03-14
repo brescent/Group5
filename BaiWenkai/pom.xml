@@ -18,6 +18,8 @@
     <modules>
         <module>bai0307</module>
         <module>bai0309</module>
+        <module>bai0310</module>
+        <module>bai0314</module>
     </modules>
 
     <properties>
