@@ -1,18 +1,32 @@
 package com.project.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="t_user")
 public class UserEntity {
 
     @Id
-    private int id;
+//设置列属性
+    @Column(length = 32)
+//自定义策略  定义uuid
+    @GenericGenerator(name="roleuuid",strategy = "uuid")
+//getid一个自定义的策略
+    @GeneratedValue(generator = "roleuuid")
+    private String id;
+    @Column(length = 48)
     private String name;
+    @Column(length = 48)
     private String pwd;
+
     private int age;
+
+
+    @OneToMany(mappedBy = "role")
+    private Set<UserRoleEntity> set;
 
     public UserEntity() {
     }
@@ -23,11 +37,19 @@ public class UserEntity {
         this.age = age;
     }
 
-    public int getId() {
+    public Set<UserRoleEntity> getSet() {
+        return set;
+    }
+
+    public void setSet(Set<UserRoleEntity> set) {
+        this.set = set;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
