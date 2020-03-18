@@ -1,13 +1,15 @@
 package com.project.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "t_user")
+
 public class UserEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String userName;
@@ -15,6 +17,16 @@ public class UserEntity {
     private String password;
 
     private int age;
+    @OneToMany(mappedBy = "user")
+    private Set<User_RoleEntity> urSet;
+
+    public Set<User_RoleEntity> getUrSet() {
+        return urSet;
+    }
+
+    public void setUrSet(Set<User_RoleEntity> urSet) {
+        this.urSet = urSet;
+    }
 
     public UserEntity() {
     }
