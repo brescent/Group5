@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--数据库驱动-->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--url-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/hibernate?useUnicode=true&amp;amp;characterEncoding=UTF-8</property>
+        <!--用户名-->
+        <property name="connection.username">root</property>
+        <!--密码-->
+        <property name="connection.password">a</property>
+
+        <!--方言,用于指定数据库的类型-->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <!--是否允许hibernate吧对象自动生成表-->
+        <!--update 对象属性改变,hibernate会直接去修改表的列进行同步-->
+        <!--create 启动hibernate的时候,会把数据库的表删除,重新在建-->
+        <property name="hbm2ddl.auto">update</property>
+        <!--输出sql语句日志-->
+        <property name="show_sql">true</property>
+        <!--管理ORM-->
+        <mapping class="com.project.entity.UserEntity"></mapping>
+        <mapping class="com.project.entity.RoleEntity"></mapping>
+        <mapping class="com.project.entity.TeacherEntity"></mapping>
+        <mapping class="com.project.entity.StudentEntity"></mapping>
+        <mapping class="com.project.entity.User_RoleEntity"></mapping>
+    </session-factory>
+</hibernate-configuration>
