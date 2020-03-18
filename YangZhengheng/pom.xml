@@ -17,10 +17,11 @@
     <url>http://www.example.com</url>
     <modules>
         <module>SpringMVC</module>
-        <module>SpringService</module>
+        <module>SpringSer</module>
         <module>SpringSer</module>
         <module>SpringMVC0310</module>
         <module>SpringSer0310</module>
+        <module>MyHibernate</module>
 
     </modules>
 
