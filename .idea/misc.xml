@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/BaiWenkai" />
-    <file type="web" url="file://$PROJECT_DIR$/JiangWankui" />
-    <file type="web" url="file://$PROJECT_DIR$/WuHaiyuan" />
-    <file type="web" url="file://$PROJECT_DIR$/XieDong" />
-    <file type="web" url="file://$PROJECT_DIR$/YangZhengheng" />
-    <file type="web" url="file://$PROJECT_DIR$/ZhangPanke" />
+    <file type="web" url="file://$PROJECT_DIR$/JiangWankui/hibernateTest1" />
+    <file type="web" url="file://$PROJECT_DIR$/YangZhengheng/SpringMVC" />
+    <file type="web" url="file://$PROJECT_DIR$/YangZhengheng/SpringMVC0310" />
+    <file type="web" url="file://$PROJECT_DIR$/YangZhengheng/SpringSer" />
+    <file type="web" url="file://$PROJECT_DIR$/YangZhengheng/SpringSer0310" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
