@@ -1,5 +1,6 @@
-package com.project.entity;
+package com.project.entity.many;
 
+import com.project.entity.many.StudentEntity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
