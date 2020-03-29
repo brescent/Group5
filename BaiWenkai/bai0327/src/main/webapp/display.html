@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>display</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el: "#displaydiv",
+                info:""
+            });
+            mounted:function () {
+                var obj=this;
+                axios.get('display')
+                    .then(function (response) {
+                        obj.info=response.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="displaydiv">
+        <table border="1" cellspacing="0">
+            <tr>
+                <td>权限编号</td>
+                <td>权限名</td>
+                <td>权限地址</td>
+                <td>权限描述</td>
+            </tr>
+            <tr v-for="limit in info">
+                <td>{{limit.id}}</td>
+                <td>{{limit.limitName}}</td>
+                <td>{{limit.limitURL}}</td>
+                <td>{{limit.limitInfo}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

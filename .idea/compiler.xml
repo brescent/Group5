@@ -28,7 +28,31 @@
         <module name="SpringSer0310" />
         <module name="springService" />
         <module name="SpringServiceAfterEnd" />
+        <module name="After0310" />
+        <module name="AfterEnd" />
+        <module name="bai0307" />
+        <module name="bai0318" />
+        <module name="bai0327" />
+        <module name="Front0310" />
+        <module name="FrontEnd" />
+        <module name="hibernateExercise" />
+        <module name="HomeWork0307" />
+        <module name="JiangWankui" />
+        <module name="springMVC" />
+        <module name="SpringMVC" />
+        <module name="SpringMVC0310" />
+        <module name="SpringMVCFrontEnd" />
+        <module name="SpringMybatisDemo2020-03-07" />
+        <module name="SpringSer" />
+        <module name="SpringSer0310" />
+        <module name="springService" />
+        <module name="SpringServiceAfterEnd" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SpringMVCFrontEnd2020-03-09" target="1.7" />
+      <module name="SpringServiceAfterEnd2020-03-09" target="1.7" />
+      <module name="sring" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
