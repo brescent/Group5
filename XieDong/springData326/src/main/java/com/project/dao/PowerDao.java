@@ -1,16 +1,17 @@
 package com.project.dao;
 
+import com.project.entity.PowerEntity;
 import com.project.entity.RoleEntity;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import java.util.List;
 
-public interface RoleDao  extends CrudRepository<RoleEntity,String> {
+public interface PowerDao extends CrudRepository<PowerEntity,String> {
 
 
+    @Query("from PowerEntity ")
+public List<PowerEntity> getAllPower();
 
 
 
