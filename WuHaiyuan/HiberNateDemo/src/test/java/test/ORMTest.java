@@ -1,7 +1,7 @@
 package test;
 
-import com.project.entity.StudentEntity;
-import com.project.entity.TeacherEntity;
+import com.project.entity.many.StudentEntity;
+import com.project.entity.many.TeacherEntity;
 import com.project.util.NateSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

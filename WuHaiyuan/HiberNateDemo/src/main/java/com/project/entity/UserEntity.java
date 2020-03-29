@@ -6,7 +6,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "t_user")
-
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,18 +13,38 @@ public class UserEntity {
 
     private String userName;
 
+    private String loginName;
+
     private String password;
 
-    private int age;
-    @OneToMany(mappedBy = "user")
-    private Set<User_RoleEntity> urSet;
+    private String userType;
 
-    public Set<User_RoleEntity> getUrSet() {
-        return urSet;
+    @OneToMany(mappedBy = "user")
+    private Set<RoleEntity> roleSet;
+
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setUrSet(Set<User_RoleEntity> urSet) {
-        this.urSet = urSet;
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+
+    public Set<RoleEntity> getRoleSet() {
+        return roleSet;
+    }
+
+    public void setRoleSet(Set<RoleEntity> roleSet) {
+        this.roleSet = roleSet;
     }
 
     public UserEntity() {
@@ -55,11 +74,4 @@ public class UserEntity {
         this.password = password;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

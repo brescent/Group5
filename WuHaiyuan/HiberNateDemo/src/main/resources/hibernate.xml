@@ -24,8 +24,13 @@
         <!--管理ORM-->
         <mapping class="com.project.entity.UserEntity"></mapping>
         <mapping class="com.project.entity.RoleEntity"></mapping>
-        <mapping class="com.project.entity.TeacherEntity"></mapping>
-        <mapping class="com.project.entity.StudentEntity"></mapping>
-        <mapping class="com.project.entity.User_RoleEntity"></mapping>
+        <mapping class="com.project.entity.GradeEntity"></mapping>
+
+
+<!--        <mapping class="com.project.entity.many.TeacherEntity"></mapping>-->
+<!--        <mapping class="com.project.entity.many.StudentEntity"></mapping>-->
+
+<!--        <mapping class="com.project.entity.many.PlayerEneity"></mapping>-->
+<!--        <mapping class="com.project.entity.many.JobEntity"></mapping>-->
     </session-factory>
 </hibernate-configuration>
