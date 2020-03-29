@@ -78,7 +78,7 @@ public class UserController {
             if(!result.equals("ok")){
                 //如果没成功就返回login
                 mv.setViewName("login");
-            }
+            } 
         } catch (IOException e) {
             e.printStackTrace();
         }

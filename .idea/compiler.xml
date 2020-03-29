@@ -6,12 +6,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="XieDong" />
-        <module name="JiangWankui" />
-        <module name="WuHaiyuan" />
-        <module name="YangZhengheng" />
-        <module name="BaiWenkai" />
-        <module name="ZhangPanke" />
+        <module name="After0310" />
+        <module name="AfterEnd" />
+        <module name="bai0307" />
+        <module name="bai0318" />
+        <module name="Front0310" />
+        <module name="FrontEnd" />
+        <module name="hibernate" />
+        <module name="Hibernate0318" />
+        <module name="hibernateExercise" />
+        <module name="hibernateTest" />
+        <module name="hibernateTest1" />
+        <module name="HomeWork0307" />
+        <module name="MyHibernate" />
+        <module name="springMVC" />
+        <module name="SpringMVC" />
+        <module name="SpringMVC0310" />
+        <module name="SpringMVCFrontEnd" />
+        <module name="SpringMybatisDemo2020-03-07" />
+        <module name="SpringSer" />
+        <module name="SpringSer0310" />
+        <module name="springService" />
+        <module name="SpringServiceAfterEnd" />
       </profile>
     </annotationProcessing>
   </component>

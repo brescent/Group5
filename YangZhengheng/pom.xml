@@ -17,11 +17,13 @@
     <url>http://www.example.com</url>
     <modules>
         <module>SpringMVC</module>
-        <module>SpringService</module>
+        <module>SpringSer</module>
         <module>SpringSer</module>
         <module>SpringMVC0310</module>
         <module>SpringSer0310</module>
-
+        <module>MyHibernate</module>
+        <module>Hibernate0318</module>
+        <module>Hibernate0321</module>
     </modules>
 
 
@@ -44,6 +46,47 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.10</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.12.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.2.12.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>4.2.5.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.0.Final</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-java8</artifactId>
+            <version>5.2.12.Final</version>
+        </dependency>
+
+
+        <!--lombok用来简化实体类：需要安装lombok插件-->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
