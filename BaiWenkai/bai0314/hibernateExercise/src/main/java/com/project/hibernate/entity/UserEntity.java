@@ -1,13 +1,13 @@
 package com.project.hibernate.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "sys_user")
 @Entity
+
 public class UserEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
     private String userName;
