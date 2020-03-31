@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="vid">
+    用户名：<input type="text" v-model="info" name="name"/><p/>
+    密码：<input type="password" name="pwd" v-model="info2"><p/>
+    <button @click="submitInfo">注册</button><p/>
+</div>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<!--AJAX-->
+<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+<!--Axios-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        el:"#vid",
+        data:{
+            info:"",
+            info2:"",
+            info3:""
+        },
+        methods:{
+            submitInfo:function () {
+                var name=  (this.info);
+                var pwd=  (this.info2);
+                //AJAX把数据提交到后台
+                this.$http.get('/addUser/'+name+"/"+pwd).then(function (value) {
+
+                })
+            }
+        }
+
+    });
+</script>
+
+</body>
+</html>
