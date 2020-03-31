@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<div id="enrollDiv">
+   用户名 :<input type="text" name="userName" v-model="userName">
+    <p/>
+   密码: <input type="password" name="password" v-model="password">
+    <p/>
+    <input type="button" value="注册" @click="enroll">
+</div>
+</body>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script>
+    new Vue({
+        el: "#enrollDiv",
+        data: {
+            userName: null,
+            password: null
+        },
+        methods: {
+            enroll: function () {
+                var params = new URLSearchParams();
+                params.append('userName', this.userName);
+                params.append('password', this.password);
+                axios.post(
+                    "../user/enroll",
+                    params,
+                    {emulateJSON: true}).then(function (res) {
+                    var userStr = res.data;
+                    if (userStr == "1") {
+                        location.href = "login.html"
+                    } else {
+                        alert("注册失败")
+                    }
+                }.bind(this), function (res) {
+
+                })
+            },
+        }
+    });
+</script>
+</html>
