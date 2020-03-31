@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <!--AJAX-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="vueDiv">
+    登录用户:<span>{{ user.userName }}</span>
+    <ol>
+        <li v-for="grade in userGrades">
+            {{ grade.gradeName }}
+        </li>
+    </ol>
+    <input type="button" value="查看所有权限" @click="getAllGrade()"></input>
+    <table border="1px">
+        <thead>
+        <td>权限名称</td>
+        <td>权限资源</td>
+        </thead>
+        <tbody>
+        <tr v-for="g in gradeList">
+            <td>{{ g.gradeName }}</td>
+            <td><input type="button" value="查看权限" @click="skip(g.gradeResource)"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el: "#vueDiv",
+        data: {
+            user:"",
+            userGrades:"",
+            gradeList:""
+        },
+        mounted: function () {
+            var obj = this;
+            axios.get('user/getUser.go')
+                .then(function (response) {
+                    obj.user = JSON.parse(response.data);
+                    obj.userGrades = obj.user.geades;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        methods: {
+            getAllGrade: function () {
+                var obj = this;
+                axios.post(
+                    "grade/getAllGrade.go",
+                    {emulateJSON: true}).then(function (res) {
+                    obj.gradeList = JSON.parse(res.data)
+                }, function (res) {
+
+                })
+            },
+            skip:function (str) {
+                location.href = str;
+            }
+        }
+    });
+</script>
+</html>
