@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+
+<!--AJAX-->
+<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+
+<div id="f1">
+
+    <input type="text" name="name" v-model="name"><br>
+    <input type="text" name="pwd" v-model="pwd"><br>
+    <input type="button" value="注册" @click="register()">
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#f1',
+        data:{
+            name:this.name,
+            pwd:this.pwd
+        },
+        methods:{
+            register:function(){
+
+                var name=this.name;
+                var pwd=this.pwd;
+                //发送get请求
+                this.$http.get('/register/'+name+'/'+pwd).then(function(res){
+                    window.location.href = "http://localhost:8082/login.html";
+                },function(){
+                    console.log('请求失败处理');
+                });
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
