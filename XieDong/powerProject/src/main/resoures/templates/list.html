@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+</head>
+<body>
+
+<table>
+
+    <thead>
+    <tr><td>权限名</td><td>uri</td></tr>
+
+    </thead>
+    <tbody>
+    <tr th:each="power,pk:${listPower}">
+
+        <td th:text="${power.powerName}"></td>
+        <td><a th:href="@{${power.powerUri}}"  ></a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
